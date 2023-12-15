@@ -23,8 +23,13 @@ require("lazy").setup({
             vim.cmd('colorscheme rose-pine')
         end
      },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
     'mbbill/undotree',
-
     --FileTreeStuff 
     --'nvim-tree/nvim-tree.lua',
     --'nvim-tree/nvim-web-devicons',
