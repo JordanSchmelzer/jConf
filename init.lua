@@ -1,10 +1,10 @@
---Plugin manager = lazy.nvim
+--init.lua
 
---vim.g.loaded_netrw = 1
---vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
---vim.opt.termguicolors = true
---
+vim.opt.termguicolors = true
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -23,17 +23,17 @@ require("jconf.set")
 require("jconf.plugins")
 require("jconf.plugin_config")
 
---require("nvim-tree").setup({
---    sort = {
- --       sorter = "case_sensitive",
---    },
---    view = {
---        width = 30,
---    },
---    renderer = {
- --       group_empty = true,
-   -- },
-  --  filters = {
-   --     dotfiles = true,
-   -- },
---})
+require("nvim-tree").setup({
+    sort = {
+       sorter = "case_sensitive",
+    },
+    view = {
+        width = 30,
+    },
+    renderer = {
+        group_empty = true,
+    },
+    filters = {
+        dotfiles = true,
+    },
+})

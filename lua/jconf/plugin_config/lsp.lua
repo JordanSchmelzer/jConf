@@ -22,8 +22,8 @@
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
+      --{ name = 'vsnip' }, -- For vsnip users.
+       { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
@@ -57,10 +57,7 @@
       { name = 'cmdline' }
     })
   })
-
-local lspconfig = require('lspconfig')
-local lsp_defaults = lspconfig.util.default_config
-
+ 
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -77,3 +74,6 @@ require("mason-lspconfig").setup({
     },
 })
 
+ -- local lspconfig = require('lspconfig')
+  --local lsp_defaults = lspconfig.util.default_config
+  --require'lspconfig'.pyright.setup{}

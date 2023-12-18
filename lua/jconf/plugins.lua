@@ -31,7 +31,7 @@ require("lazy").setup({
     },
     'mbbill/undotree',
     --FileTreeStuff 
-    --'nvim-tree/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     --'nvim-tree/nvim-web-devicons',
     --DAP (debug)
     {'mfussenegger/nvim-dap'},
@@ -51,12 +51,21 @@ require("lazy").setup({
     {},
     {'L3MON4D3/LuaSnip',
     --follow latest release.
-    version = "v2.*", --Replace current major by latest released major
+    version = "v2.1.1", --Replace current major by latest released major
     --install jsregexp (optional)
-    builld = "make install_jsregexp"
+    build = "make install_jsregexp"
     },
 
-    {'neovim/nvim-lspconfig'},
-    {'williamboman/mason.nvim'},
+    {
+        'neovim/nvim-lspconfig',
+        
+    },
+    {'williamboman/mason.nvim',
+      opts = {
+          ensure_installed = {
+                "pyright",
+             },
+        },
+    },
     {'williamboman/mason-lspconfig.nvim'},
 })
