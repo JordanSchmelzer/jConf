@@ -1,11 +1,10 @@
-print("hello from plugins.lua")
 
 require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     'nvim-lua/plenary.nvim',
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.5', 
+        tag = '0.1.5',
         dependencies = {{'nvim-lua/plenary.nvim'}}
     },
     {
@@ -14,7 +13,6 @@ require("lazy").setup({
         dependencies = {{'nvim-lua/plenary.nvim'}}
     },
     'tpope/vim-fugitive',
-    
     --COLORS
     {
         'rose-pine/neovim',
@@ -22,7 +20,7 @@ require("lazy").setup({
         config = function()
             vim.cmd('colorscheme rose-pine')
         end
-     },
+    },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -32,14 +30,34 @@ require("lazy").setup({
     'mbbill/undotree',
     --FileTreeStuff 
     'nvim-tree/nvim-tree.lua',
-    --'nvim-tree/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
+    --Linting
+    {'jose-elias-alvarez/null-ls.nvim',
+        dependencies = {{'nvim-lua/plenary.nvim'}},
+        opts = {
+            on_attach = function(client, bufnr)
+                if client.supports_method("textDocument/formatting") then
+                    vim.api.nvim_clear_autocmds({
+                        group = augroup,
+                        buffer = bufnr,
+                    })
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        group = augroup,
+                        buffer = bufnr,
+                        callback = function()
+                            vim.lsp.buf.format({ bufnr = bufnr })
+                        end,
+                    })
+                end
+            end,
+        }
+    },
     --DAP (debug)
     {'mfussenegger/nvim-dap'},
     {
         'mfussenegger/nvim-dap-ui',
         dependencies = {{'mfussenegger/nvim-dap'}}
     },
-
     --Completion
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
     {'hrsh7th/nvim-cmp'},
@@ -48,23 +66,23 @@ require("lazy").setup({
     {'hrsh7th/cmp-buffer'},
     {'hrsh7th/cmp-cmdline'},
     --Snippets
-    {},
     {'L3MON4D3/LuaSnip',
-    --follow latest release.
-    version = "v2.1.1", --Replace current major by latest released major
-    --install jsregexp (optional)
-    build = "make install_jsregexp"
+        --follow latest release.
+        version = "v2.1.1", --Replace current major by latest released major
+        --install jsregexp (optional)
+        build = "make install_jsregexp"
     },
-
     {
         'neovim/nvim-lspconfig',
-        
     },
     {'williamboman/mason.nvim',
-      opts = {
-          ensure_installed = {
-                "pyright",
-             },
+        opts = {
+            ensure_installed = {
+                -- "pyright", --P.O.S! i cant get it to work...
+                "mypy",
+                "ruff",
+                "black",
+            },
         },
     },
     {'williamboman/mason-lspconfig.nvim'},
