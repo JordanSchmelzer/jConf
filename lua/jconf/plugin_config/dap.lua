@@ -16,7 +16,7 @@ dap.adapters.python = function(cb, config)
   else
     cb({
       type = 'executable',
-      command = 'path/to/virtualenvs/debugpy/bin/python',
+      command = '~/.local/share/nvim/mason/bin/debugpy',
       args = { '-m', 'debugpy.adapter' },
       options = {
         source_filetype = 'python',
@@ -66,7 +66,14 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 vim.keymap.set("n","<leader>bp","<cmd> DapToggleBreakpoint <CR>")
-vim.keymap.set("n","<leader>dpr",function()
-    require('dap-python').test_method()
+
+local dappython = require('dap-python')
+vim.keymap.set("n","<leader>bug",function()
+    dappython.test_method()
 end
 )
+
+
+
+
+
