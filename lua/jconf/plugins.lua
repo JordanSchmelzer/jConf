@@ -1,4 +1,3 @@
-
 require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     'nvim-lua/plenary.nvim',
@@ -25,7 +24,7 @@ require("lazy").setup({
         "folke/tokyonight.nvim",
         lazy = false,
         priority = 1000,
-        opts = {},
+        --opts = {},
     },
     'mbbill/undotree',
     --FileTreeStuff 
@@ -34,29 +33,22 @@ require("lazy").setup({
     --Linting
     {'jose-elias-alvarez/null-ls.nvim',
         dependencies = {{'nvim-lua/plenary.nvim'}},
-        opts = {
-            on_attach = function(client, bufnr)
-                if client.supports_method("textDocument/formatting") then
-                    vim.api.nvim_clear_autocmds({
-                        group = augroup,
-                        buffer = bufnr,
-                    })
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        group = augroup,
-                        buffer = bufnr,
-                        callback = function()
-                            vim.lsp.buf.format({ bufnr = bufnr })
-                        end,
-                    })
-                end
-            end,
-        }
+        --opts = {},
     },
     --DAP (debug)
     {'mfussenegger/nvim-dap'},
     {
-        'mfussenegger/nvim-dap-ui',
+        'rcarriga/nvim-dap-ui',
         dependencies = {{'mfussenegger/nvim-dap'}}
+    },
+    {
+        'mfussenegger/nvim-dap-python',
+        ft = "python",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "rcarriga/nvim-dap-ui",
+        },
+        --opts = { },
     },
     --Completion
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
@@ -82,6 +74,7 @@ require("lazy").setup({
                 "mypy",
                 "ruff",
                 "black",
+                "debugpy",
             },
         },
     },

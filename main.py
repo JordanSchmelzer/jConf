@@ -3,4 +3,4 @@ def primes(n: int):
     s = [True]
 
 
- yx = primes("foo")
+yx = primes("foo")
