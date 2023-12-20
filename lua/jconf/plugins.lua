@@ -38,17 +38,14 @@ require("lazy").setup({
     --DAP (debug)
     {'mfussenegger/nvim-dap'},
     {
-        'rcarriga/nvim-dap-ui',
-        dependencies = {{'mfussenegger/nvim-dap'}}
-    },
-    {
         'mfussenegger/nvim-dap-python',
-        ft = "python",
         dependencies = {
             "mfussenegger/nvim-dap",
-            "rcarriga/nvim-dap-ui",
         },
-        --opts = { },
+    },
+    {
+        'rcarriga/nvim-dap-ui',
+        dependencies = {'mfussenegger/nvim-dap'},
     },
     --Completion
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
