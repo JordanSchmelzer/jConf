@@ -1,4 +1,5 @@
 require("lazy").setup({
+    'christoomey/vim-tmux-navigator',
     'nvim-treesitter/nvim-treesitter',
     'nvim-lua/plenary.nvim',
     {
