@@ -42,6 +42,9 @@ vim.keymap.set("n", "<leader>dp", function()
     require('dap-python').test_method()
 end)
 
+vim.keymap.set("n","<F5>","<cmd> DapContinue<CR>")
+vim.keymap.set("n","<F8>","<cmd> DapStepInto<CR>")
+
 vim.keymap.set("n","<C-h>","<cmd> TmuxNavigateLeft<CR>")
 vim.keymap.set("n","<C-l>","<cmd> TmuxNavigateRight<CR>")
 vim.keymap.set("n","<C-j>","<cmd> TmuxNavigateDown<CR>")
